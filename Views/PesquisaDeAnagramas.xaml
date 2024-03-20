@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Anagramas.Views.PesquisaDeAnagramas"
+             xmlns:viewmodel="clr-namespace:Anagramas.ViewModels"
+             x:DataType="viewmodel:PesquisaDeAnagramasViewModel"
+             BackgroundColor="#1C0935">    
+    
+    <VerticalStackLayout Padding="35" Spacing="25">
+
+        <Frame HeightRequest="50" CornerRadius="10" Padding="10, 0, 10, 0">
+            <Editor x:Name="Entrada" Placeholder="Digite uma palavra" FontSize="20" TextColor="#1C0935"/>
+        </Frame>
+      
+        <Button Text="Pesquisar anagramas"
+                TextColor="White"
+                BackgroundColor="#AB3FD0" 
+                FontSize="15" 
+                HeightRequest="40" 
+                WidthRequest="180" 
+                CornerRadius="10" 
+                Clicked="PesquisarButton_Clicked"/>
+
+        <Frame HeightRequest="450" CornerRadius="10" Padding="10">
+
+            <CollectionView x:Name="ColecaoDeAnagramas" ItemsSource="{Binding ListaDeAnagramas}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout>
+                            <Label Text="{Binding .}" TextColor="#1C0935" FontSize="20"/>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+        </Frame>
+
+    </VerticalStackLayout>
+</ContentPage>
